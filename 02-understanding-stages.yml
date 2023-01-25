@@ -13,27 +13,34 @@ stages:
   - job: SecondJob
     steps: 
     - bash: echo Build SecondJob
+    - bash: echo $(PipelineLevelVariable)
 
 - stage: DevDeploy
+  variables:
+    environment: Dev
   dependsOn: Build
   jobs:
   - job: DevDeployJob
     steps: 
-    - bash: echo DevDeployJob
+    - bash: echo $(environment)DevDeployJob
 
 - stage: QADeploy
+  variables:
+    environment: QA
   dependsOn: Build
   jobs:
   - job: QADeployJob
     steps: 
-    - bash: echo QADeployJob
+    - bash: echo $(environment)QADeployJob
 
 - stage: ProdDeploy
+  variables:
+    environment: ProdDeploy
   dependsOn: 
   - DevDeploy
   - QADeploy
   jobs:
   - job: ProdDeployJob
     steps: 
-    - bash: echo ProdDeployJob
+    - bash: echo $(environment)ProdDeployJob
 
