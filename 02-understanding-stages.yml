@@ -33,6 +33,7 @@ stages:
         TargetFolder: 'echo $(System.BuildArtifactStagingDirectory)'
 
     - bash: ls -R $(System.BuildArtifactStagingDirectory)
+    
 
 
     
