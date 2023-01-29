@@ -57,7 +57,7 @@ stages:
       inputs:
         action: 'deploy'
         kubernetesServiceConnection: 'azure-kubernetes-connection'
-        namespace: 'default'
+        namespace: 'kube-public'
         manifests: '$(System.ArtifactsDirectory)/configuration/kubernetes/deployment.yaml'
         containers: 'in28min/currency-exchange-devops:$(tag)'
 # Stage 2
