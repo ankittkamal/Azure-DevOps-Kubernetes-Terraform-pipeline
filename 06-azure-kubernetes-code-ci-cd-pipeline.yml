@@ -24,7 +24,7 @@ stages:
     - task: Docker@2
       inputs:
         containerRegistry: 'ankiitkamalDockerHub'
-        repository: 'ankittkamall/currency-exchange-devops '
+        repository: 'ankittkamall/currency-exchange-devops'
         command: 'buildAndPush'
         Dockerfile: '**/Dockerfile'
         tags: '$(tag)'
@@ -58,4 +58,4 @@ stages:
         kubernetesServiceConnection: 'azure-kubernetes-connection'
         namespace: 'default'
         manifests: '$(System.ArtifactsDirectory)/configuration/kubernetes/deployment.yaml'
-        containers: 'in28min/currency-exchange-devops:$(tag)'
+        containers: 'ankittkamall/currency-exchange-devops:$(tag)'
